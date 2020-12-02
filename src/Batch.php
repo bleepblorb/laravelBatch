@@ -77,10 +77,10 @@ class Batch implements BatchInterface
                 }
             }
     
-            $connection = config('database.default');
+            $connection = $this->getConnectionName($table);
     
             $driver = config("database.connections.{$connection}.driver");
-    
+
             if ( $driver == 'pgsql' ){
     
                 $cases = '';
