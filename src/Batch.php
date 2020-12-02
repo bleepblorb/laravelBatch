@@ -90,6 +90,8 @@ class Batch implements BatchInterface
                 }
     
                 $query = "UPDATE \"" . $this->getFullTableName($table) . '" SET ' . substr($cases, 0, -2) . " WHERE \"$index\" IN('" . implode("','", $ids) . "');";
+                // Quick hack to get this working, there are still backticks in the $final values
+                $query= str_replace('`', '"', $query);
     
             }else{
     
