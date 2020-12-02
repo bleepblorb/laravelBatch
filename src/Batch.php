@@ -64,7 +64,7 @@ class Batch implements BatchInterface
                     $updatedAtColumn = $table->getUpdatedAtColumn();
     
                     if (!isset($val[$updatedAtColumn])) {
-                        $val[$updatedAtColumn] = now()->format($table->getDateFormat());
+                        $val[$updatedAtColumn] = $table->fromDateTime(now());
                     }
                 }
 
@@ -241,7 +241,7 @@ class Batch implements BatchInterface
         if ($table->usesTimestamps()) {
             $createdAtColumn = $table->getCreatedAtColumn();
             $updatedAtColumn = $table->getUpdatedAtColumn();
-            $now = now()->format($table->getDateFormat());
+            $now = $table->fromDateTime(now());
 
             $addCreatedAtValue = false;
             $addUpdatedAtValue = false;
